@@ -1,15 +1,20 @@
 <template>
+  <div>
     <header-vue/>
+    <main-container/>
+  </div>
 </template>
 
 <script>
 import HeaderVue from './components/view/Header.vue'
+import MainContainer from './components/view/MainContainer.vue'
 
 export default {
   name: 'App',
   components: {
-    HeaderVue
-  }
+    HeaderVue,
+    MainContainer
+    }
 }
 </script>
 
@@ -23,4 +28,6 @@ export default {
   margin: 0;
   padding: 0;
 }
+
+
 </style>
