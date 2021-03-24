@@ -1,8 +1,11 @@
 <template>
   <div class="main-container">
-    <item></item>
-    <item></item>
-    <item></item>
+    <item v-for="item in items"  :key="item"
+    :id="item.id"
+    :title="item.title"
+    :image="item.image"
+    :price="item.price">
+  </item>
   </div>
 </template>
 <script>
