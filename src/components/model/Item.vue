@@ -26,11 +26,25 @@ export default {
 </script>
 <style>
 .item {
-  width: 220px;
+  width: 250px;
   height: 300px;
-  border: 1px dotted #DCDCDC;
-  justify-content: space-around;
+  margin: 5px;
+  border: 1px dotted black;
+  border-radius: 10px;
+
 }
+
+@media (max-width:1328px) {
+  .item {
+    width: 240px;
+    }
+}
+@media (max-width:1328px) {
+  .item {
+    width: 230px;
+    }
+}
+
 
 img {
         height: 200px;

@@ -36,5 +36,6 @@ export default {
   clear: both;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
 }
 </style>

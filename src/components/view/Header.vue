@@ -14,13 +14,19 @@
     </button>
     </div>
   </div>
-  <div class="header">I,m header</div>
+  <div class="header">I,m header
+    <basket class="basket"/>
+
+  </div>
 </template>
 
 <script>
-
+import Basket from "../model/basket.vue"
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    Basket
+  }
 }
 </script>
 
@@ -29,15 +35,25 @@ export default {
 .header {
   background-color: #5222;
   height: 125px;
+  position: sticky;
+  top: 0;
 
 }
+
+.top-header {
+  position: sticky;
+    top: 0;
+}
+
 .left-top-header {
     width: 70%;
     background-color: #1E90FF;
     float: left;
     height: 30px;
 
+
   }
+
 .right-top-header {
     width: 30%;
     background-color: #6495ED;
@@ -68,5 +84,7 @@ export default {
     }
 }
 
-
+.basket{
+margin: 0 0 0 auto;
+}
 </style>
