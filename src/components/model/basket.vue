@@ -24,21 +24,21 @@ export default {
 .basket{
   display: block;
   border-radius: 10px;
-  height: 64px;
-  width: 100px;
+  height: 40px;
+  width: 75px;
   text-decoration: none;
   background-color: red;
 
 }
 
 .basket img {
-  height: 64px;
-  width: 64px;
+  height: 40px;
+  width: 40px;
 }
 .basket span {
   margin: 3px;
   position: absolute;
-  top: 55%;
+  top: 46%;
   font-style: oblique;
 
 }

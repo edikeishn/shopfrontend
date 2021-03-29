@@ -1,11 +1,8 @@
 <template>
   <div class="main-container">
     <item v-for="item in items"  :key="item"
-    :id="item.id"
-    :title="item.title"
-    :image="item.image"
-    :price="item.price">
-  </item>
+    :item="item">
+    </item>
   </div>
 </template>
 <script>
@@ -20,10 +17,9 @@ export default {
    created() {
     this.axios.get("./items.json")
     .then(response => {
-      console.log(response.data.items);
+
     this.items = response.data.items;
       })
-    console.log(this.items);
 
   },
   components: {

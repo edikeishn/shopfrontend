@@ -1,26 +1,29 @@
 <template>
   <div class="item">
     <a href="##">
-      <img alt="Картинка" :src="image"/>
+      <img alt="Картинка" :src="item.image"/>
     </a>
-    <h3>{{title}}</h3>
-    <p>Цена: {{price}}</p>
+    <h3>{{item.title}}</h3>
+    <p>Цена: {{item.price}}</p>
   </div>
 </template>
 <script>
 export default {
   name: "Item",
 
-  props: ["id","title","image","price"],
+  props: ["item"],
 
   data() {
     return {
+      image:"",
+      title:"",
+      price:""
 
     }
   },
 
   created() {
-
+    console.log(this.item);
   }
 }
 </script>
@@ -43,6 +46,17 @@ export default {
   .item {
     width: 230px;
     }
+}
+
+@media (max-width:480px) {
+  .item {
+    width: 180px;
+    }
+
+  img {
+            height: 150px;
+            width: auto;
+          }
 }
 
 
