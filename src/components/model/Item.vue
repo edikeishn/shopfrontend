@@ -5,6 +5,7 @@
     </a>
     <h3>{{item.title}}</h3>
     <p>Цена: {{item.price}}</p>
+    <button v-if="available" @click="adToBasket">В корзину</button>
   </div>
 </template>
 <script>
@@ -15,19 +16,42 @@ export default {
 
   data() {
     return {
-      image:"",
-      title:"",
-      price:""
 
     }
   },
+
+  computed: {
+    available() {
+      return this.item.quantity>0;
+      }
+
+    },
+
+  methods: {
+    adToBasket () {
+    if (this.available) {
+    this.$store.dispatch("adItemToBasket" ,this.item.id);
+  //  this.item.quantity--;
+        }
+      }
+    },
 
   created() {
     console.log(this.item);
   }
 }
 </script>
-<style>
+<style scope>
+
+h3 {
+margin: 6px;
+  }
+
+p {
+margin: 6px;
+}
+
+
 .item {
   width: 250px;
   height: 300px;
@@ -64,4 +88,6 @@ img {
         height: 200px;
         width: auto;
       }
+
+
 </style>

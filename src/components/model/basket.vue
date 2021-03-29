@@ -2,7 +2,7 @@
   <div >
     <a class="basket" href="##">
       <img alt="Корзина" :src="image"/>
-      <span>1</span>
+      <span>{{quantity}}</span>
     </a>
   </div>
 </template>
@@ -16,8 +16,15 @@ export default {
       image:"assets/content/basket_full.png"
     }
   }
-}
+,
+  methods: {},
+  computed: {
+  quantity() {
+   return this.$store.state.itemsInBasket.length
 
+  }
+  }
+}
 </script>
 
 <style>
@@ -34,12 +41,15 @@ export default {
 .basket img {
   height: 40px;
   width: 40px;
+  float: left;
+
 }
 .basket span {
   margin: 3px;
-  position: absolute;
-  top: 46%;
+  position: relative;
+  top: 17%;
   font-style: oblique;
+  float: left;
 
 }
 
