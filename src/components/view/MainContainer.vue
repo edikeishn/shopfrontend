@@ -11,19 +11,22 @@ export default {
   name: "MainContainer",
   data() {
     return {
-      items: []
+
     }
   },
-   created() {
-    this.axios.get("./items.json")
-    .then(response => {
 
-    this.items = response.data.items;
-      })
-
+   mounted() {
+    this.$store.dispatch("getItems");
   },
-  components: {
+
+   components: {
     Item
+  },
+
+  computed: {
+    items() {
+     return this.$store.state.items
+    }
   }
 }
 </script>
