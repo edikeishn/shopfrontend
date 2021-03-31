@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
-import axios from 'axios'
+import  {test}  from '../api/test.js'
+import  {_getItems}  from '../api/items_api.js'
 
 export default createStore({
   state: {
@@ -12,6 +13,7 @@ export default createStore({
   },
   mutations: {
     adItemToBasket(state, item_id) {
+      test();
       state.itemsInBasket.push(item_id);
       let item = state.items.filter(
         item => item.id == item_id
@@ -31,12 +33,9 @@ export default createStore({
       context.commit("adItemToBasket",item_id);
     },
     //Метод извлечения всех товаров из базы данных
-    getItems (context) {
-      axios.get("./items.json")
-      .then(response => {
-      let items = response.data.items;
-      context.commit("getItems", items);
-        })
+    async getItems (context) {
+    let items = await _getItems();
+    context.commit("getItems", items)
       }
   },
   modules: {
