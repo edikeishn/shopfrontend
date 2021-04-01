@@ -20,7 +20,7 @@ export default {
   methods: {},
   computed: {
   quantity() {
-   return this.$store.state.itemsInBasket.length
+   return this.$store.state.basket.itemsInBasket.length
 
   }
   }

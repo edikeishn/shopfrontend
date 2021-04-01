@@ -30,7 +30,7 @@ export default {
   methods: {
     adToBasket () {
     if (this.available) {
-    this.$store.dispatch("adItemToBasket" ,this.item.id);
+    this.$store.dispatch("basket/adItemToBasket" ,this.item.id);
   //  this.item.quantity--;
         }
       }

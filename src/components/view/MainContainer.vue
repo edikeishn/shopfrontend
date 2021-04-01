@@ -16,7 +16,7 @@ export default {
   },
 
    mounted() {
-    this.$store.dispatch("getItems");
+    this.$store.dispatch("itemsModule/getItems");
   },
 
    components: {
@@ -25,7 +25,7 @@ export default {
 
   computed: {
     items() {
-     return this.$store.state.items
+     return this.$store.state.itemsModule.items
     }
   }
 }
