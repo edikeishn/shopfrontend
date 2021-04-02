@@ -1,8 +1,8 @@
 <template>
   <div class="item" v-if="item">
-
+<a>
       <img alt="Картинка" :src="item.image"/>
-
+</a>
     <h3>{{item.title}}</h3>
     <p>Цена: {{item.price}}</p>
     <button  @click="adToBasket">В корзину</button>
@@ -14,20 +14,20 @@ export default {
 
   props: ["itemId"],
 
+  created() {
+    this.$store.dispatch("itemsModule/getItems");
+ },
+
   computed: {
     item() {
-      return this.$store.getters.["itemsModule/getItemById"];
+      return this.$store.getters.["itemsModule/getItemById"](this.itemId);
     }
 
     },
 
   methods: {
 
-    },
-
-  created() {
-
-  }
+    }
 }
 </script>
 <style scope>

@@ -32,11 +32,12 @@ export const itemsModule = {
    }
  },
   getters: {
-    getItemById: (state) => async (item_id) => {
-       let item = await state.items.find(
-       item =>  item.id === item_id
-       );
-       return item;
+    getItemById: (state) =>  (item_id) => {
+    for (const element of state.items) {
+       if (element.id == item_id) {
+    return element;
+  }
+  }
    }
   }
 }
