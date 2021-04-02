@@ -31,5 +31,12 @@ export const itemsModule = {
      context.commit("decrementItem", item_id)
    }
  },
-  getters: { }
+  getters: {
+    getItemById: (state) => async (item_id) => {
+       let item = await state.items.find(
+       item =>  item.id === item_id
+       );
+       return item;
+   }
+  }
 }

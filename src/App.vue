@@ -1,19 +1,19 @@
 <template>
   <div>
     <header-vue/>
-    <main-container/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import HeaderVue from './components/view/Header.vue'
-import MainContainer from './components/view/MainContainer.vue'
+//import MainContainer from './components/view/MainContainer.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderVue,
-    MainContainer
+//    MainContainer
     }
 }
 </script>

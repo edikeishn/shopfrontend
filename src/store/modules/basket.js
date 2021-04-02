@@ -1,5 +1,4 @@
 
-
 export const basket = {
   namespaced: true,
   state: () => ({
@@ -7,7 +6,11 @@ export const basket = {
    }),
   mutations: {
     adItemToBasket(state, item_id) {
-      state.itemsInBasket.push(item_id);
+    console.log(state.itemsInBasket);
+    if (this.getters["basket/getItemById"](item_id)!=null) {
+      this.getters["basket/getItemById"](item_id).quantity++;
+    }
+    else state.itemsInBasket.push({"id":item_id,"quantity":1});
     }
   },
   actions: {
@@ -18,5 +21,12 @@ export const basket = {
     }
    },
 
-  getters: {}
+  getters: {
+    getItemById: (state) => (item_id) => {
+       let item = state.itemsInBasket.find(
+       item => item.id === item_id
+       );
+       return item;
+   }
+  }
 }

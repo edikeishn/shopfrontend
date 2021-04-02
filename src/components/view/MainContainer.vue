@@ -15,7 +15,7 @@ export default {
     }
   },
 
-   mounted() {
+   created() {
     this.$store.dispatch("itemsModule/getItems");
   },
 

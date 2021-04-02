@@ -1,42 +1,32 @@
 <template>
-  <div class="item">
-    <router-link :to="{name: 'itemdetails', params: { itemId: item.id } }">
+  <div class="item" v-if="item">
+
       <img alt="Картинка" :src="item.image"/>
-    </router-link>
+
     <h3>{{item.title}}</h3>
     <p>Цена: {{item.price}}</p>
-    <button v-if="available" @click="adToBasket">В корзину</button>
+    <button  @click="adToBasket">В корзину</button>
   </div>
 </template>
 <script>
 export default {
-  name: "Item",
+  name: "ItemDetails",
 
-  props: ["item"],
-
-  data() {
-    return {
-
-    }
-  },
+  props: ["itemId"],
 
   computed: {
-    available() {
-      return this.item.quantity>0;
-      }
+    item() {
+      return this.$store.getters.["itemsModule/getItemById"];
+    }
 
     },
 
   methods: {
-    adToBasket () {
-    if (this.available) {
-    this.$store.dispatch("basket/adItemToBasket" ,this.item.id);
-        }
-      }
+
     },
 
   created() {
-  
+
   }
 }
 </script>
