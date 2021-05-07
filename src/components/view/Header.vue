@@ -1,7 +1,14 @@
 <template>
   <div class="top-header">
-    <div class="left-top-header"> 1</div>
+    <div class="left-top-header">
+
+                  <router-link to="/admin">
+                    Админка
+                  </router-link>
+
+    </div>
     <div class="right-top-header">
+
       <button class="button">
         <div>
           Регистрация
@@ -16,7 +23,6 @@
   </div>
   <div class="header">I,m header
     <basket class="basket"/>
-
   </div>
 </template>
 
@@ -34,7 +40,7 @@ export default {
 
 .header {
   background-color: #5222;
-  height: 125px;
+  height: 75px;
   position: sticky;
   top: 0;
 
@@ -42,23 +48,20 @@ export default {
 
 .top-header {
   position: sticky;
-    top: 0;
+    height: 30px;
+    background-color: #1E90FF;
 }
 
 .left-top-header {
     width: 70%;
-    background-color: #1E90FF;
     float: left;
-    height: 30px;
-
 
   }
 
 .right-top-header {
     width: 30%;
     background-color: #6495ED;
-    float: left;
-    height: 30px;
+    float: right;
 
   }
 

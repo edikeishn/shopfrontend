@@ -1,4 +1,4 @@
-import  {_getItems}  from '../../api/items_api.js'
+import  {_getItems} from '../../api/items_api.js'
 
 export const itemsModule = {
   namespaced: true,
@@ -10,6 +10,7 @@ export const itemsModule = {
     getItems(state, items) {
       state.items = items;
     },
+
 
     //Метод уменьшения количества определнного товара
     decrementItem(state, item_id) {

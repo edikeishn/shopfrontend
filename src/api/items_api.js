@@ -2,10 +2,12 @@ const axios = require('axios');
 
 //Метод извлечения всех товаров из базы данных
 function _getItems() {
-let items =  axios.get("/items.json")
-  .then(response => response.data.items);
+let items =  axios.get("http://localhost:8081/")
+  .then(response => response.data);
+
 return items;
 }
+
 
 //Метод извлечения товара из базы данных по id
 function _getItemsById(item_id) {
