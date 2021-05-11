@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div >
     <router-link :to="{name: 'itemdetails', params: { itemId: item.id } }">
       <img alt="Картинка" :src="item.image"/>
     </router-link>
@@ -40,51 +40,7 @@ export default {
 </script>
 <style scope>
 
-h3 {
-margin: 6px;
-  }
 
-p {
-margin: 6px;
-}
-
-
-.item {
-  width: 250px;
-  height: 300px;
-  margin: 5px;
-  border: 1px dotted black;
-  border-radius: 10px;
-
-}
-
-@media (max-width:1328px) {
-  .item {
-    width: 240px;
-    }
-}
-@media (max-width:1328px) {
-  .item {
-    width: 230px;
-    }
-}
-
-@media (max-width:480px) {
-  .item {
-    width: 180px;
-    }
-
-  img {
-            height: 150px;
-            width: auto;
-          }
-}
-
-
-img {
-        height: 200px;
-        width: auto;
-      }
 
 
 </style>

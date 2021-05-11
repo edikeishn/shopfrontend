@@ -1,10 +1,9 @@
 <template>
-  <div class="main-container">
+  <div >
 
     <router-link to="/admin/addNewItem">
       Добавить новый товар
     </router-link>
-
 
     <table class="table">
         <tr>
@@ -51,13 +50,7 @@ export default {
   }
 }
 </script>
-<style scope>
-.main-container {
-  clear: both;
-  display: inline;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
+<style scope >
 
 table, th, td {
   border: 1px solid black;

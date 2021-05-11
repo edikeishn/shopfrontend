@@ -42,26 +42,31 @@ export default {
   background-color: #5222;
   height: 75px;
   position: sticky;
-  top: 0;
+  top: 33px;
 
 }
 
 .top-header {
-  position: sticky;
-    height: 30px;
+    position: sticky;
+    top: 0px;
+    height: 33px;
     background-color: #1E90FF;
 }
 
 .left-top-header {
+    display: block;
+    height: 33px;
     width: 70%;
     float: left;
 
   }
 
 .right-top-header {
+    display: block;
+    height: 33px;
     width: 30%;
     background-color: #6495ED;
-    float: right;
+    float: left;
 
   }
 

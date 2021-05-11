@@ -1,66 +1,43 @@
 <template>
-  <div class="main-container">
-
+  <div>
     <router-link to="/admin">
-      Вернутьься обратно
+      Вернуться обратно
     </router-link>
+    <p/>
 
+    <div>
+      <input type="text" v-model="title" required minlength="4" maxlength="8" size="10">
+      <input type="text" v-model="price" required minlength="4" maxlength="8" size="10">
+      <input type="text" v-model="quantity" required minlength="4" maxlength="8" size="10">
+      <input type="file" required accept="image/png, image/jpeg"  style="color: transparent;" >
+      <button @click="adNewItem">Загрузить</button>
+    </div>
 
-    <table class="table">
-        <tr>
-          <th>№№</th>
-          <th>Артикул</th>
-          <th>Наименование</th>
-          <th>Цена</th>
-          <th>Количество</th>
-          <th>Редактировать</th>
-        </tr>
-        <tr v-for="(item, index) in items" :key='item.id'>
-          <td>{{index+1}}</td>
-          <td>{{item.id}}</td>
-          <td>{{item.title}}</td>
-          <td>{{item.price}}</td>
-          <td>{{item.quantity}}</td>
-          <td>№№</td>
-        </tr>
-  </table>
   </div>
 </template>
 <script>
-
+import  {_addNewItem} from '../../api/items_api.js'
 export default {
-  name: "Admin",
+  name: "AddNewItem",
   data() {
     return {
-
+        title: "",
+        price: "",
+        quantity: ""
     }
   },
 
-   created() {
-    this.$store.dispatch("itemsModule/getItems");
-  },
-
-   components: {
-
-  },
-
-  computed: {
-    items() {
-     return this.$store.state.itemsModule.items
+  methods: {
+    // Метод добавления нового товара в базу данных
+    adNewItem () {
+     _addNewItem(this.title, this.price, this.quantity);
+     this.title = "";
+     this.price = "";
+     this.quantity = "";
+      }
     }
-  }
 }
 </script>
 <style scope>
-.main-container {
-  clear: both;
-  display: inline;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
 
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
 </style>

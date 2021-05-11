@@ -18,4 +18,15 @@ let item =  axios.get("../items.json")
 return item;
 }
 
-export {_getItems, _getItemsById}
+//Метод добавления нового товара в базу данных
+function _addNewItem(title, price, quantity) {
+  console.log(title);
+  console.log(price);
+  console.log(quantity);
+
+ //let items =  axios.post("http://localhost:8081/")
+//  .then(response => response.data);
+
+}
+
+export {_getItems, _getItemsById, _addNewItem}
