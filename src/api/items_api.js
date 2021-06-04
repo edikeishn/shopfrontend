@@ -19,13 +19,28 @@ return item;
 }
 
 //Метод добавления нового товара в базу данных
-function _addNewItem(title, price, quantity) {
-  console.log(title);
-  console.log(price);
-  console.log(quantity);
+function _addNewItem(title, price, quantity, image) {
 
- //let items =  axios.post("http://localhost:8081/")
-//  .then(response => response.data);
+  const formData = new FormData();
+  let item = JSON.stringify({title, price, quantity});
+
+  formData.append('item', new Blob([item],{type: 'application/json'}));
+  formData.append('file', image);
+
+axios.post( 'http://localhost:8081/',
+formData,
+  {
+    headers: {
+              "Content-Type":"multipart/form-data",
+
+    }
+  }
+).then(function(){
+  console.log('SUCCESS!!');
+})
+.catch(function(){
+  console.log('FAILURE!!');
+});
 
 }
 
