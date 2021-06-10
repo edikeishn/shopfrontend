@@ -1,0 +1,67 @@
+<template>
+  <div id="cart">
+    
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+import CartListItem from './CartListItem';
+
+export default {
+  name: 'CartList',
+  computed: {
+    ...mapGetters([
+      'cartItems',
+      'cartTotal',
+      'cartQuantity'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'removeAllCartItems'
+    ])
+  },
+  components: {
+    CartListItem
+  }
+}
+</script>
+
+<style scoped>
+#cart {
+  height: 100%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-empty-text {
+  padding: 10px 0;
+}
+
+.cart--header {
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 15px;
+}
+
+.cart-item {
+  padding: 10px 0;
+}
+
+.cart-details {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.cart-remove-all--text {
+  cursor: pointer;
+}
+
+.cart-remove-all--text .fa {
+  padding-right: 5px;
+}
+</style>

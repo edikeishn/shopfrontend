@@ -22,16 +22,16 @@
     </div>
   </div>
   <div class="header">I,m header
-    <basket class="basket"/>
+
   </div>
 </template>
 
 <script>
-import Basket from "../model/basket.vue"
+
 export default {
   name: 'Header',
   components: {
-    Basket
+    
   }
 }
 </script>

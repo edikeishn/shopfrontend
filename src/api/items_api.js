@@ -2,8 +2,8 @@ const axios = require('axios');
 
 //Метод извлечения всех товаров из базы данных
 function _getItems() {
-let items =  axios.get("http://localhost:8081/")
-  .then(response => response.data);
+let items =  axios.get("../items.json")
+  .then(response => response.data.items);
 
 return items;
 }
