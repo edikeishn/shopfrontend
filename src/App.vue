@@ -1,77 +1,29 @@
 <template>
-  <div>
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
+  <div class="container">
+  <navbar-list/>
+    <section class="hero is-medium is-link hero-custom">
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+  <div class="hero-body">
+    <p class="title">
+      Medium hero
+    </p>
+    <p class="subtitle">
+      Medium subtitle
+    </p>
   </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+</section>
     <router-view class="top"/>
   </div>
 </template>
 
 <script>
-//import HeaderVue from './components/view/Header.vue'
+import NavbarList from './components/navbar/NavbarList.vue'
 
 export default {
   name: 'App',
 
   components: {
-
+  NavbarList
   },
 
   created() {
@@ -101,6 +53,8 @@ export default {
 .top {
   margin-top: 70px;
 }
-
+.hero-custom{
+  margin-top: 5.5rem
+}
 
 </style>

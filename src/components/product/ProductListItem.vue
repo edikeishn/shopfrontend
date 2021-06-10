@@ -1,5 +1,5 @@
 <template>
-  <div class="item ">
+  <div class="item card">
     <router-link :to="{name: 'itemdetails', params: { id: productItem.id } }">
       <img alt="Картинка" :src="productItem.image"/>
     </router-link>
@@ -36,7 +36,6 @@ export default {
   width: 250px;
   height: 306px;
   margin: 5px;
-  border: 1px dotted black;
   border-radius: 10px;
 
 }
