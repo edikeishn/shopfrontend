@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-  <navbar-list/>
+  <navbar-list class="navbar-c"/>
     <section class="hero is-medium is-link hero-custom">
 
   <div class="hero-body">
@@ -55,6 +55,9 @@ export default {
 }
 .hero-custom{
   margin-top: 5.5rem
+}
+.navbar-c{
+  padding-top: 1rem;
 }
 
 </style>
