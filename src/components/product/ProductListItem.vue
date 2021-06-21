@@ -8,7 +8,7 @@
     <span
   @click="addCartItem(productItem)"
   class="tag is-primary has-text-white">
-    Add to Cart
+    В корзину
 </span>
   </div>
 </template>

@@ -67,13 +67,13 @@
         <a class="has-text-grey">Избранное</a>
       </p>
       <p class="level-item">
-        <a class="has-text-grey">
+        <router-link to="/cart" class="has-text-grey">
           <span class="icon-text">
            <span class="icon">
             <i class="fa fa-shopping-cart"></i>
            </span>
            <span>{{ cartQuantity }}</span>
-         </span></a></p>
+         </span></router-link></p>
     </div>
   </nav>
 
@@ -85,7 +85,6 @@
     name: "NavbarList",
     computed: {
   ...mapGetters([
-    'token',
     'cartQuantity'
   ])
 },

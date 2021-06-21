@@ -1,7 +1,7 @@
 <template>
   <div class="container">
   <navbar-list class="navbar-c"/>
-    <section class="hero is-medium is-link hero-custom">
+    <section v-if="this.$route.path==='/'" class="hero is-medium is-link hero-custom">
 
   <div class="hero-body">
     <p class="title">
@@ -28,6 +28,7 @@ export default {
 
   created() {
     this.updateInitialState();
+    
   },
 
   methods: {
