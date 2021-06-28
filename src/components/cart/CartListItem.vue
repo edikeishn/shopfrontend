@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="cart-item__image">
-      <img :src="require('../../assets/' + cartItem.image_tag)" />
+      <img :src="cartItem.image" />
     </div>
   </div>
 </template>

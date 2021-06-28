@@ -4,6 +4,7 @@ import ProductItem from "../components/product/ProductItem.vue"
 import CartList from "../components/cart/CartList.vue"
 import Admin from "../components/view/Admin.vue"
 import AddNewItem from "../components/view/AddNewItem.vue"
+import NotFound from '../components/NotFound.vue';
 
 const routes = [
   { path: '/', name: "main", component: ProductList },
@@ -17,7 +18,12 @@ const routes = [
   { path: '/itemdetails/:id',
     component: ProductItem,
     name: 'itemdetails',
-    props: true }
+    props: true },
+
+    {
+        path: '/:pathMatch(.*)*',
+        component: NotFound
+      }
 ]
 
 

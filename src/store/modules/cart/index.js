@@ -7,7 +7,7 @@ const state = {
 const mutations = {
   UPDATE_CART_ITEMS (state, payload) {
     state.cartItems.push(payload);
-    
+
   }
 }
 
@@ -17,8 +17,29 @@ const actions = {
       commit('UPDATE_CART_ITEMS', response.data)
     });
   },
+
   addCartItem ({ commit }, cartItem) {
-        commit('UPDATE_CART_ITEMS', cartItem)
+      cartItem.quantity = 1;
+      axios.get(`../items.json`).then((response) => {
+      let availableProduct = response.data.items.find(
+      item =>  item.id === cartItem.id
+    );
+      let cartProductExists = false;
+      const cartProducts = this.getters.cartItems;
+      cartProducts.map((cartProduct) => {
+      if (cartProduct.id === cartItem.id) {
+        console.log(cartProduct.quantity);
+      if(cartProduct.quantity < availableProduct.quantity){
+        cartProduct.quantity++;
+        cartProductExists = true;
+      }
+ }
+});
+if (!cartProductExists) cartProducts.push(cartItem);
+      commit('UPDATE_PRODUCT_ITEMS', cartProducts);
+
+    });
+
     },
   removeCartItem ({ commit }, cartItem) {
     axios.post('/api/cart/delete', cartItem).then((response) => {

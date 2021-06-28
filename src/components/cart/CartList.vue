@@ -4,14 +4,14 @@
       <i class="fa fa-2x fa-shopping-cart"></i>
     </div>
     <p v-if="cartItems.length === 0" class="cart-empty-text has-text-centered">
-      Add some items to the cart!
+      Добавьте какой нибудь товар в карзину!
     </p>
     <ul v-if="cartItems.length > 0">
       <li v-for="cartItem in cartItems" :key="cartItem.id" class="cart-item">
         <CartListItem :cartItem="cartItem" />
       </li>
       <div class="cart-details">
-        <p>Total Quantity:
+        <p>Общее количество:
           <span class="has-text-weight-bold">{{ cartQuantity }}</span>
         </p>
         <p @click="removeAllCartItems"
