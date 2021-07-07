@@ -1,41 +1,37 @@
 import axios from 'axios';
 
+
 const state = {
-  cartItems: []
+  cartItems: [],
+
 }
 
 const mutations = {
   UPDATE_CART_ITEMS (state, payload) {
-  console.log(state.cartItems[0]);
-      console.log(payload[0]);
-        state.cartItems = payload;
-          console.log(state.cartItems[0]);
-
+   state.cartItems = payload;
   }
 }
 
 const actions = {
-  getCartItems ({ commit }, token) {
-    axios.get(`/api/cart?token=${token}`).then((response) => {
-      commit('UPDATE_CART_ITEMS', response.data)
-    });
-  },
+
 
   addCartItem ({ commit }, cartItem) {
+    //  console.log(this.getters.cartItems[0]);
+    //  console.log(cartItem.id);
       cartItem.quantity = 1;
-  //    let cartProductExists = false;
-      const cartProducts = this.getters.cartItems;
+      let cartProductExists = false;
+      console.log(this.getters.cartItems[0]);
+      const cartProducts = JSON.parse(JSON.stringify(this.getters.cartItems));
+  //    console.log(cartProducts[0]);
       cartProducts.map((cartProduct) => {
       if (cartProduct.id === cartItem.id) {
-        cartItem.quantity = cartProduct.quantity+2;
-        //cartProduct.quantity+=3;
-    //    cartProductExists = true;
-    const index = cartProducts.indexOf(cartProduct);
-    cartProducts.splice(index,1);
-    console.log(cartProducts);
- }
+  //      console.log(cartProduct.quantity);
+      cartProduct.quantity++;
+      cartProductExists = true;
+   }
  });
-    cartProducts.push(cartItem);
+    if(!cartProductExists) cartProducts.push(cartItem);
+
       commit('UPDATE_CART_ITEMS', cartProducts);
 },
 
