@@ -6,7 +6,10 @@ const state = {
 
 const mutations = {
   UPDATE_CART_ITEMS (state, payload) {
-    state.cartItems.push(payload);
+  console.log(state.cartItems[0]);
+      console.log(payload[0]);
+        state.cartItems = payload;
+          console.log(state.cartItems[0]);
 
   }
 }
@@ -20,32 +23,28 @@ const actions = {
 
   addCartItem ({ commit }, cartItem) {
       cartItem.quantity = 1;
-      axios.get(`../items.json`).then((response) => {
-      let availableProduct = response.data.items.find(
-      item =>  item.id === cartItem.id
-    );
-      let cartProductExists = false;
+  //    let cartProductExists = false;
       const cartProducts = this.getters.cartItems;
       cartProducts.map((cartProduct) => {
       if (cartProduct.id === cartItem.id) {
-        console.log(cartProduct.quantity);
-      if(cartProduct.quantity < availableProduct.quantity){
-        cartProduct.quantity++;
-        cartProductExists = true;
-      }
+        cartItem.quantity = cartProduct.quantity+2;
+        //cartProduct.quantity+=3;
+    //    cartProductExists = true;
+    const index = cartProducts.indexOf(cartProduct);
+    cartProducts.splice(index,1);
+    console.log(cartProducts);
  }
-});
-if (!cartProductExists) cartProducts.push(cartItem);
-      commit('UPDATE_PRODUCT_ITEMS', cartProducts);
+ });
+    cartProducts.push(cartItem);
+      commit('UPDATE_CART_ITEMS', cartProducts);
+},
 
-    });
-
-    },
   removeCartItem ({ commit }, cartItem) {
     axios.post('/api/cart/delete', cartItem).then((response) => {
       commit('UPDATE_CART_ITEMS', response.data)
     });
   },
+
   removeAllCartItems ({ commit }) {
     axios.post('/api/cart/delete/all').then((response) => {
       commit('UPDATE_CART_ITEMS', response.data)
@@ -61,7 +60,9 @@ const getters = {
     }, 0).toFixed(2);
   },
   cartQuantity: state => {
-    return state.cartItems.length;
+    return state.cartItems.reduce((acc, cartItem) => {
+  return cartItem.quantity + acc;
+}, 0);
   }
 }
 
