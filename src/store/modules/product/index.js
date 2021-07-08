@@ -23,7 +23,7 @@ const actions = {
 const getters = {
   productItems: state => state.productItems,
   productItemFromId: (state) => (id) => {
-    console.log(id);
+
     return state.productItems.find(productItem => productItem.id === id)
   }
 }

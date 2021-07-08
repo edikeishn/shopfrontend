@@ -46,7 +46,8 @@ export default {
   },
   components: {
     CartListItem
-  }
+  },
+
 }
 </script>
 

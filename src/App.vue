@@ -28,12 +28,13 @@ export default {
 
   created() {
     this.updateInitialState();
-    
+
   },
 
   methods: {
     updateInitialState() {
       this.$store.dispatch("getProductItems");
+    
     }
   }
 

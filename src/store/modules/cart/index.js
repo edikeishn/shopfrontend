@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 
 const state = {
   cartItems: [],
@@ -16,35 +14,37 @@ const actions = {
 
 
   addCartItem ({ commit }, cartItem) {
-    //  console.log(this.getters.cartItems[0]);
-    //  console.log(cartItem.id);
-      cartItem.quantity = 1;
       let cartProductExists = false;
-      console.log(this.getters.cartItems[0]);
       const cartProducts = JSON.parse(JSON.stringify(this.getters.cartItems));
-  //    console.log(cartProducts[0]);
       cartProducts.map((cartProduct) => {
       if (cartProduct.id === cartItem.id) {
-  //      console.log(cartProduct.quantity);
       cartProduct.quantity++;
       cartProductExists = true;
    }
  });
-    if(!cartProductExists) cartProducts.push(cartItem);
-
+    if(!cartProductExists) {
+      cartItem.quantity = 1;
+      cartProducts.push(cartItem);
+    }
       commit('UPDATE_CART_ITEMS', cartProducts);
 },
 
   removeCartItem ({ commit }, cartItem) {
-    axios.post('/api/cart/delete', cartItem).then((response) => {
-      commit('UPDATE_CART_ITEMS', response.data)
-    });
+    const cartProducts = JSON.parse(JSON.stringify(this.getters.cartItems));
+    cartProducts.map((cartProduct) => {
+    if (cartProduct.id === cartItem.id && cartProduct.quantity > 1) {
+    cartProduct.quantity--;
+   }
+   else if (cartProduct.id === cartItem.id && cartProduct.quantity === 1) {
+        const cartIndexToRemove = cartProducts.findIndex(cartProduct => cartProduct.id === cartItem.id);
+        cartProducts.splice(cartIndexToRemove, 1);
+      }
+});
+commit('UPDATE_CART_ITEMS', cartProducts);
   },
 
   removeAllCartItems ({ commit }) {
-    axios.post('/api/cart/delete/all').then((response) => {
-      commit('UPDATE_CART_ITEMS', response.data)
-    });
+  commit('UPDATE_CART_ITEMS', []);
   }
 }
 

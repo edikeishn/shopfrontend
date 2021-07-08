@@ -2,10 +2,10 @@
   <nav class="level navbar is-fixed-top container">
     <div class="level-left">
       <div class="level-item">
-        <div class="dropdown">
+        <div class="dropdown" id="categoriesMenu">
           <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-              <span>Click me</span>
+            <button class="button" @click="showMenu" aria-haspopup="true" aria-controls="dropdown-menu3">
+              <span>Категории</span>
               <span class="icon is-small">
                 <i class="fa fa-angle-down" aria-hidden="true"></i>
               </span>
@@ -13,31 +13,19 @@
           </div>
           <div class="dropdown-menu" id="dropdown-menu3" role="menu">
             <div class="dropdown-content">
-              <a href="#" class="dropdown-item">
-                Overview
+              <a href="#" class="dropdown-item" @click="showMenu">
+                Все категории
               </a>
-              <a href="#" class="dropdown-item">
-                Modifiers
+              <a href="#" class="dropdown-item" @click="showMenu">
+                Чаи
               </a>
-              <a href="#" class="dropdown-item">
-                Grid
+              <a href="#" class="dropdown-item" @click="showMenu">
+                Напитки
               </a>
-              <a href="#" class="dropdown-item">
-                Form
+              <a href="#" class="dropdown-item" @click="showMenu">
+                Натуральная косметика
               </a>
-              <a href="#" class="dropdown-item">
-                Elements
-              </a>
-              <a href="#" class="dropdown-item">
-                Components
-              </a>
-              <a href="#" class="dropdown-item">
-                Layout
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                More
-              </a>
+
             </div>
           </div>
         </div>
@@ -45,11 +33,11 @@
       <div class="level-item">
         <div class="field has-addons">
           <p class="control">
-            <input class="input" type="text" placeholder="Find a post">
+            <input class="input" type="text" placeholder="Поиск продукта" v-model="itemsFindText">
           </p>
           <p class="control">
-            <button class="button">
-              Search
+            <button class="button" @click="findItems">
+              Поиск
             </button>
           </p>
         </div>
@@ -61,7 +49,7 @@
         <a class="has-text-grey">Войти</a>
       </p>
       <p class="level-item">
-        <a class="has-text-grey">Закзаы</a>
+        <a class="has-text-grey">Заказы</a>
       </p>
       <p class="level-item">
         <a class="has-text-grey">Избранное</a>
@@ -83,6 +71,23 @@
   import { mapGetters } from 'vuex';
   export default {
     name: "NavbarList",
+    data() {
+      return {
+        itemsFindText: ""
+      }
+    },
+    methods: {
+      showMenu() {
+        var element = document.getElementById("categoriesMenu");
+        element.classList.contains("is-active") ? element.classList.remove("is-active") : element.classList.add("is-active");
+      },
+      findItems() {
+        console.log(this.itemsFindText);
+        this.$store.dispatch("getProductItems");
+        this.itemsFindText="";
+
+      }
+    },
     computed: {
   ...mapGetters([
     'cartQuantity'
