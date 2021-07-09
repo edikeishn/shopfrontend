@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import ProductList from "../components/product/ProductList.vue"
 import ProductItem from "../components/product/ProductItem.vue"
 import CartList from "../components/cart/CartList.vue"
-import Admin from "../components/view/Admin.vue"
-import AddNewItem from "../components/view/AddNewItem.vue"
+import AdminProductList from "../components/product/AdminProductList.vue"
+import AdminAddProductItem from "../components/admin/AdminAddProductItem.vue"
 import NotFound from '../components/NotFound.vue';
 
 const routes = [
@@ -11,9 +11,9 @@ const routes = [
 
   { path: '/cart', component: CartList },
 
-  { path: '/admin', component: Admin },
+  { path: '/admin', component: AdminProductList },
 
-  { path: '/admin/addNewItem', component: AddNewItem },
+  { path: '/admin/addnewproduct', component: AdminAddProductItem },
 
   { path: '/itemdetails/:id',
     component: ProductItem,
