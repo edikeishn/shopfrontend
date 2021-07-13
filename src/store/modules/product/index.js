@@ -17,6 +17,11 @@ const actions = {
       commit('UPDATE_PRODUCT_ITEMS', response.data.items);
 
     });
+  },
+  addNewItemToStock ({commit}, newItem) {
+    console.log(newItem.title);
+    commit('UPDATE_PRODUCT_ITEMS', this.getters.productItems);
+
   }
 }
 

@@ -46,7 +46,7 @@
     <!-- Right side -->
     <div class="level-right is-size-1-mobile">
       <p class="level-item">
-        <a class="has-text-grey">Войти</a>
+        <router-link to="/admin" class="has-text-grey">Админ</router-link>
       </p>
       <p class="level-item">
         <a class="has-text-grey">Заказы</a>
