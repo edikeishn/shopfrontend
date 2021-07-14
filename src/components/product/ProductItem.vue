@@ -1,17 +1,58 @@
 <template>
-  <section id="product-item" class="item" v-if="productItem">
+ <div class="column is-three-fifths is-offset-one-quarter" v-if="productItem">
+   <div class="title">
+    <h3>{{productItem.title}}</h3>
+   </div>
+  <div class="columns">
+   <div class="column is-one-thirds">
     <a>
-          <img alt="Картинка" :src="productItem.image"/>
+     <img alt="Картинка" :src="productItem.image" @click="fullscreen"/>
     </a>
-        <h3>{{productItem.title}}</h3>
-        <p>Цена: {{productItem.price}}</p>
-        <button  @click="adToBasket">В корзину</button>
-  </section>
+    <div :class="[{'is-active':active},'modal']">
+   <div class="modal-background" @click="fullscreen"></div>
+   <div class="modal-content">
+    <p class="image_fullscreen">
+      <img :src="productItem.image" class="image_fullscreen">
+    </p>
+  </div>
+  <button class="modal-close is-large" aria-label="close" @click="fullscreen"></button>
+</div>
+    </div>
+    <div class="column is-two-thirds">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Стоимость: </td>
+            <td>{{productItem.price}} руб.</td>
+          </tr>
+          <tr>
+            <td>В наличии:</td>
+            <td>{{productItem.quantity}} шт.</td>
+          </tr>
+        </tbody>
+      </table>
+     <section>
+
+      <span
+    @click="addCartItem(productItem)"
+    class="tag is-primary has-text-white">
+      В корзину
+  </span>
+    </section>
+   </div>
+  </div>
+ </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'ProductItem',
+  data() {
+    return {
+      active: false
+    }
+  },
   props: ['id'],
   computed: {
     productItem() {
@@ -24,56 +65,27 @@ export default {
         .dispatch('addCartItem', productItem)
         .then(() => {
           this.$router.push('/cart');
+          this.getProductItems();
         });
-    }
+    },
+    fullscreen() {
+        this.active ? this.active=false : this.active=true
+    },
+    ...mapActions(['addCartItem','getProductItems'])
+  },
+  created() {
+    this.getProductItems();
   }
 }
 </script>
 
 <style scoped>
-h3 {
-margin: 6px;
-  }
-
-p {
-margin: 6px;
+.image_fullscreen{
+  height: 405px;
+  width: auto;
 }
-
-
-.item {
-  width: 250px;
-  height: 300px;
-  margin: 5px;
-  border: 1px dotted black;
-  border-radius: 10px;
-
+.modal-content{
+  height: 405px;
+  width: auto;
 }
-
-@media (max-width:1328px) {
-  .item {
-    width: 240px;
-    }
-}
-@media (max-width:1328px) {
-  .item {
-    width: 230px;
-    }
-}
-
-@media (max-width:480px) {
-  .item {
-    width: 180px;
-    }
-
-  img {
-            height: 150px;
-            width: auto;
-          }
-}
-
-
-img {
-        height: 200px;
-        width: auto;
-      }
 </style>
