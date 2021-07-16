@@ -95,7 +95,14 @@
 },
   }
 </script>
-<style >
+<style scoped>
+.navbar {
+  padding: 1rem;
+
+}
+.container {
+  box-shadow: 0 1px 4px rgb(0 0 0 / 25%);
+}
 .tags-custom {
   background-color: black;
 }

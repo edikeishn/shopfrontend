@@ -1,8 +1,7 @@
 <template>
+  <navbar-list/>
   <div class="container">
-  <navbar-list class="navbar-c"/>
     <section v-if="this.$route.path==='/'" class="hero is-medium is-link hero-custom">
-
   <div class="hero-body">
     <p class="title">
       Medium hero
@@ -34,7 +33,7 @@ export default {
   methods: {
     updateInitialState() {
       this.$store.dispatch("getProductItems");
-    
+
     }
   }
 
@@ -53,13 +52,11 @@ export default {
   padding: 0;
 }
 .top {
-  margin-top: 70px;
+  margin-top: 1rem;
 }
 .hero-custom{
   margin-top: 5.5rem
 }
-.navbar-c{
-  padding-top: 1rem;
-}
+
 
 </style>
